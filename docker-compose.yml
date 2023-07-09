@@ -15,7 +15,7 @@ services:
     networks:
       - snake-net
     ports:
-      - '8080:80'
+      - '80:80'
 
 networks:
   snake-net:
