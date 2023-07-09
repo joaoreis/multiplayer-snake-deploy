@@ -1,0 +1,13 @@
+name: dispatch receiver
+
+on: [ repository_dispatch ]
+
+jobs:
+  build:
+    if: github.event.action == "trigger-snake"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/workflow-2.yml
+      - name: dispatch trigger
+        run: |
+          echo "repository_dispatch triggered"
