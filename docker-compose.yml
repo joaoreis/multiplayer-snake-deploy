@@ -1,0 +1,23 @@
+services:
+  backend:
+    image: johnnykg/snake-backend
+    container_name: snake-backend
+    restart: always
+    networks:
+      - snake-net
+    ports:
+      - '3000:3000'
+
+  frontend:
+    image: johnnykg/snake-frontend
+    container_name: snake-frontend
+    restart: always
+    networks:
+      - snake-net
+    ports:
+      - '8080:80'
+
+networks:
+  snake-net:
+    external: true
+    name: snake-net

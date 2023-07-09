@@ -8,18 +8,20 @@ permissions:
   contents: read
 
 jobs:
-  EC2-DEPLOY:
+  deploy:
+    name: Deploy to EC2
     runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.ref_name }}
-      url: ${{ steps.deploy.outputs.vm_url }}
     steps:
-    - id: deploy
-      name: Deploy
-      uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.4
-      with:
-        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCES_KEY }}
-        aws_default_region: sa-east-1
+      - name: Checkout the files
+        uses: actions/checkout@v3
 
-        app_port: 3000
+      - name: Copy files with sssh
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY:  ${{ secrets.EC2_SSH_KEY }}
+          ARGS: "-rltgoDzvo --delete"
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+          EXCLUDE: "/dist/, /node_modules/, **.env, rebuild_app.sh, watcher.sh"
