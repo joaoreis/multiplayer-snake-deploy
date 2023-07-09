@@ -19,5 +19,6 @@ services:
 
 networks:
   snake-net:
-    external: true
     name: snake-net
+    enable_ipv6: false
+    driver: bridge
