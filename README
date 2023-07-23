@@ -1,1 +1,34 @@
-Repo for deploying snake game on aws
+# FangAndFriends - Deploys
+
+Este é o repositório que contém scripts e arquivos de configuração relacionados aos deploys do jogo "FangAndFriends" - um jogo da cobrinha multiplayer.
+
+## Tecnologias Utilizadas
+
+- Scripts personalizados para implantação em ambientes específicos.
+
+## GitHub Action para Implantação Automatizada
+
+A GitHub Action neste repositório é responsável por automatizar o processo de implantação do jogo "FangAndFriends" no Amazon EC2, que é um serviço de computação em nuvem da Amazon Web Services (AWS). A ação é acionada sempre que ocorre um push para a branch master (ou qualquer outra branch configurada) do repositório.
+
+Aqui estão os principais passos do fluxo de trabalho da GitHub Action para a implantação:
+
+1. **Configuração de Chaves SSH**: Antes da implantação, as chaves SSH são configuradas para permitir o acesso seguro ao servidor EC2 na AWS.
+
+2. **Construção do Container**: O jogo "FangAndFriends" é empacotado em um container Docker, permitindo a portabilidade e a fácil configuração do ambiente.
+
+3. **Envio do Container para o EC2**: O container gerado é enviado para o servidor EC2 na AWS, onde será executado em um ambiente isolado e seguro.
+
+4. **Execução do Jogo**: O jogo é executado no servidor EC2 e estará disponível para os jogadores através do endereço configurado.
+
+## Como realizar o deploy
+
+Para implantar o jogo "FangAndFriends" em um ambiente específico, siga as instruções abaixo:
+
+1. Faça o clone deste repositório: `git clone https://github.com/joaoreis/multiplayer-snake-deploy.git`.
+2. Navegue para o diretório do projeto: `cd multiplayer-snake-deploy`.
+3. Siga as instruções fornecidas nos scripts e arquivos de configuração para realizar o deploy em seu ambiente desejado.
+
+## Projeto Geral
+
+Este repositório contém as configurações e scripts necessários para implantar o jogo "FangAndFriends" em diferentes ambientes. É importante entender os requisitos e o ambiente específico em que você deseja implantar o jogo antes de executar os scripts de deploy.
+
